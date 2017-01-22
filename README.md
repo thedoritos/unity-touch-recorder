@@ -4,7 +4,7 @@ Record & Play touches for Unity iOS.
 
 ## What Is This?
 
-UnityTouchRecorder is an experimental project to record & play touch inputs :point_down:.
+UnityTouchRecorder is an experimental project to record & play touch inputs :point_down:.  
 The main purpose is to test apps automatically.
 
 Happy game testing :)
@@ -23,5 +23,5 @@ Happy game testing :)
 
 ## NOTE :memo:
 
-The current version only supports iOS and it may have tons of bugs :bug:.
+The current version only supports iOS and it may have tons of bugs :bug:.  
 Issues and Pull Requests are always welcome.
