@@ -6,4 +6,4 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
-    path: Assets/UnityPotch/Samples/Scenes/GUIScene.unity
+    path: Assets/UnityTouchRecorder/Samples/Scenes/GUIScene.unity
