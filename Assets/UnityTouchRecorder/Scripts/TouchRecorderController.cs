@@ -25,6 +25,7 @@ namespace UnityTouchRecorder
                     view.OpenMenuButton.gameObject.SetActive(false);
                     view.StopButton.gameObject.SetActive(true);
 
+                    plugin.Clear();
                     plugin.StartRecording();
                 });
 
