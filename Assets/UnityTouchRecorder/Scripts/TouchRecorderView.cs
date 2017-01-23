@@ -28,6 +28,9 @@ namespace UnityTouchRecorder
         InputField playIntervalInputField;
 
         [SerializeField]
+        Button resetButton;
+
+        [SerializeField]
         GameObject menuPanel;
 
         public Button OpenMenuButton { get { return openMenuButton; } }
@@ -39,6 +42,8 @@ namespace UnityTouchRecorder
         public Button PlayButton { get { return playButton; } }
 
         public Button StopButton { get { return stopButton; } }
+
+        public Button ResetButton { get { return resetButton; } }
 
         public int Repeat
         {

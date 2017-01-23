@@ -18,6 +18,11 @@ namespace UnityTouchRecorder
                     view.SetMenuActive(!view.IsMenuActive);
                 });
 
+            view.ResetButton.onClick.AddListener(() =>
+                {
+                    plugin.Clear();
+                });
+
             view.StartRecordingButton.onClick.AddListener(() =>
                 {
                     view.SetMenuActive(false);
