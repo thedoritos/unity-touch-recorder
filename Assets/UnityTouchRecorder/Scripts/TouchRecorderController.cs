@@ -23,10 +23,20 @@ namespace UnityTouchRecorder
                     view.SetMenuActive(false);
 
                     view.OpenMenuButton.gameObject.SetActive(false);
-                    view.StopButton.gameObject.SetActive(true);
+                    view.StopRecordingButton.gameObject.SetActive(true);
+                    view.StopButton.gameObject.SetActive(false);
 
                     plugin.Clear();
                     plugin.StartRecording();
+                });
+
+            view.StopRecordingButton.onClick.AddListener(() =>
+                {
+                    view.OpenMenuButton.gameObject.SetActive(true);
+                    view.StopRecordingButton.gameObject.SetActive(false);
+                    view.StopButton.gameObject.SetActive(false);
+
+                    plugin.StopRecording();
                 });
 
             view.PlayButton.onClick.AddListener(() =>
@@ -34,6 +44,7 @@ namespace UnityTouchRecorder
                     view.SetMenuActive(false);
 
                     view.OpenMenuButton.gameObject.SetActive(false);
+                    view.StopRecordingButton.gameObject.SetActive(false);
                     view.StopButton.gameObject.SetActive(true);
 
                     plugin.Play(view.Repeat, view.Interval);
@@ -42,9 +53,9 @@ namespace UnityTouchRecorder
             view.StopButton.onClick.AddListener(() =>
                 {
                     view.OpenMenuButton.gameObject.SetActive(true);
+                    view.StopRecordingButton.gameObject.SetActive(false);
                     view.StopButton.gameObject.SetActive(false);
 
-                    plugin.StopRecording();
                     plugin.Stop();
                 });
         }

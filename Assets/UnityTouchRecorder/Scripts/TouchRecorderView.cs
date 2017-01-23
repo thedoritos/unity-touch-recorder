@@ -13,6 +13,9 @@ namespace UnityTouchRecorder
         Button startRecordingButton;
 
         [SerializeField]
+        Button stopRecordingButton;
+
+        [SerializeField]
         Button playButton;
 
         [SerializeField]
@@ -30,6 +33,8 @@ namespace UnityTouchRecorder
         public Button OpenMenuButton { get { return openMenuButton; } }
 
         public Button StartRecordingButton { get { return startRecordingButton; } }
+
+        public Button StopRecordingButton { get { return stopRecordingButton; } }
 
         public Button PlayButton { get { return playButton; } }
 
