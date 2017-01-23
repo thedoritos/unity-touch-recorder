@@ -84,8 +84,8 @@
                 
                 switch (e.phase) {
                     case UITouchPhaseBegan:
-                        break;
                         UnitySendTouchesBegin(e.allTouches, e);
+                        break;
                     case UITouchPhaseEnded:
                         UnitySendTouchesEnded(e.allTouches, e);
                         break;
