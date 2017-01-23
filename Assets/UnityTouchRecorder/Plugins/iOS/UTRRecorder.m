@@ -65,7 +65,7 @@
         for(NSUInteger i = 0; i < repeat; i++) {
             NSArray *items = [NSArray arrayWithArray:self.events];
             UTREvent *first = items.firstObject;
-            NSTimeInterval delay = [[NSDate date] timeIntervalSince1970] - first.timestamp;
+            NSTimeInterval delay = [[NSProcessInfo processInfo] systemUptime] - first.timestamp;
             
             for (UTREvent *e in items) {
                 [e delay:delay];
@@ -76,7 +76,7 @@
                     return;
                 }
                 
-                [NSThread sleepForTimeInterval:e.timestamp - [[NSDate date] timeIntervalSince1970]];
+                [NSThread sleepForTimeInterval:e.timestamp - [[NSProcessInfo processInfo] systemUptime]];
                 
                 if (!self.playing) {
                     return;
