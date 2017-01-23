@@ -7,19 +7,19 @@ namespace Kakera
     public class PotchManager : MonoBehaviour
     {
         [DllImport("__Internal")]
-        private static extern void UnityTouchFakerPlugin_StartRecording();
+        private static extern void UnityTouchRecorderPlugin_StartRecording();
 
         [DllImport("__Internal")]
-        private static extern void UnityTouchFakerPlugin_StopRecording();
+        private static extern void UnityTouchRecorderPlugin_StopRecording();
 
         [DllImport("__Internal")]
-        private static extern void UnityTouchFakerPlugin_Play(int repeat, float interval);
+        private static extern void UnityTouchRecorderPlugin_Play(int repeat, float interval);
 
         [DllImport("__Internal")]
-        private static extern void UnityTouchFakerPlugin_Stop();
+        private static extern void UnityTouchRecorderPlugin_Stop();
 
         [DllImport("__Internal")]
-        private static extern void UnityTouchFakerPlugin_Clear();
+        private static extern void UnityTouchRecorderPlugin_Clear();
 
         [SerializeField]
         GameObject recordingPanel;
@@ -39,12 +39,12 @@ namespace Kakera
         {
             recordingPanel.SetActive(false);
 
-            UnityTouchFakerPlugin_StartRecording();
+            UnityTouchRecorderPlugin_StartRecording();
         }
 
         public void OnClickStopRecording()
         {
-            UnityTouchFakerPlugin_StopRecording();
+            UnityTouchRecorderPlugin_StopRecording();
         }
 
         public void OnClickStartPlaying()
@@ -67,7 +67,7 @@ namespace Kakera
 
             recordingPanel.SetActive(false);
 
-            UnityTouchFakerPlugin_Play(repeat, 5.0f);
+            UnityTouchRecorderPlugin_Play(repeat, 5.0f);
         }
     }
 }

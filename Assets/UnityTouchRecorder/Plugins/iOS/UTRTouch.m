@@ -1,18 +1,18 @@
 //
-//  UTFTouch.m
+//  UTRTouch.m
 //  Unity-iPhone
 //
 //  Created by thedoritos on 1/22/17.
 //
 //
 
-#import "UTFTouch.h"
+#import "UTRTouch.h"
 
-@implementation UTFTouch
+@implementation UTRTouch
 
 +(instancetype)create:(UITouch *)touch
 {
-    UTFTouch *fake = [UTFTouch new];
+    UTRTouch *fake = [UTRTouch new];
     
     fake.fakeTimestamp = touch.timestamp;
     fake.fakePhase = touch.phase;

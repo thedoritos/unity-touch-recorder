@@ -1,22 +1,22 @@
 //
-//  UTFRecorder.m
+//  UTRRecorder.m
 //  Unity-iPhone
 //
 //  Created by thedoritos on 1/22/17.
 //
 //
 
-#import "UTFRecorder.h"
-#import "UTFEvent.h"
+#import "UTRRecorder.h"
+#import "UTREvent.h"
 
-@implementation UTFRecorder
+@implementation UTRRecorder
 
 +(instancetype)sharedRecorder
 {
-    static UTFRecorder *recorder;
+    static UTRRecorder *recorder;
     static dispatch_once_t onceToken;
     dispatch_once(&onceToken, ^{
-        recorder = [UTFRecorder new];
+        recorder = [UTRRecorder new];
         recorder.recording = NO;
         recorder.playing = NO;
         recorder.events = [NSMutableArray new];
@@ -46,7 +46,7 @@
         return;
     }
     
-    [self.events addObject:[UTFEvent create:event phase:phase]];
+    [self.events addObject:[UTREvent create:event phase:phase]];
 }
 
 -(NSUInteger)count
@@ -64,14 +64,14 @@
     dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
         for(NSUInteger i = 0; i < repeat; i++) {
             NSArray *items = [NSArray arrayWithArray:self.events];
-            UTFEvent *first = items.firstObject;
+            UTREvent *first = items.firstObject;
             NSTimeInterval delay = [[NSDate date] timeIntervalSince1970] - first.timestamp;
             
-            for (UTFEvent *e in items) {
+            for (UTREvent *e in items) {
                 [e delay:delay];
             }
             
-            for (UTFEvent *e in items) {
+            for (UTREvent *e in items) {
                 if (!self.playing) {
                     return;
                 }

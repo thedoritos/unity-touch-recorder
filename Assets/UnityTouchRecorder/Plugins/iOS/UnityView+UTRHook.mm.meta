@@ -1,6 +1,6 @@
 fileFormatVersion: 2
-guid: 9463996ccda9042d3b34b084a6696d1f
-timeCreated: 1485073945
+guid: fc7e75fa83f574657831bff37f090aac
+timeCreated: 1485142920
 licenseType: Pro
 PluginImporter:
   serializedVersion: 1
@@ -10,12 +10,18 @@ PluginImporter:
   isOverridable: 0
   platformData:
     Any:
-      enabled: 1
+      enabled: 0
       settings: {}
     Editor:
       enabled: 0
       settings:
         DefaultValueInitialized: true
+    iOS:
+      enabled: 1
+      settings: {}
+    tvOS:
+      enabled: 1
+      settings: {}
   userData: 
   assetBundleName: 
   assetBundleVariant: 

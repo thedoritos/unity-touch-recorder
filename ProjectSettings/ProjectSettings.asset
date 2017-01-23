@@ -11,7 +11,7 @@ PlayerSettings:
   useOnDemandResources: 0
   accelerometerFrequency: 60
   companyName: KakeraGames
-  productName: unity_potch
+  productName: unity-touch-recorder
   defaultCursor: {fileID: 0}
   cursorHotspot: {x: 0, y: 0}
   m_SplashScreenBackgroundColor: {r: 0.13333334, g: 0.17254902, b: 0.21176471, a: 1}
@@ -118,7 +118,7 @@ PlayerSettings:
     16:10: 1
     16:9: 1
     Others: 1
-  bundleIdentifier: com.kakeragames.unitypotch
+  bundleIdentifier: com.kakeragames.unitytouchrecorder
   bundleVersion: 1.0
   preloadedAssets: []
   metroInputSource: 0

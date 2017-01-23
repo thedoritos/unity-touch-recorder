@@ -1,5 +1,5 @@
 //
-//  UTFTouch.h
+//  UTRTouch.h
 //  Unity-iPhone
 //
 //  Created by thedoritos on 1/22/17.
@@ -8,7 +8,7 @@
 
 #import <UIKit/UIKit.h>
 
-@interface UTFTouch : UITouch
+@interface UTRTouch : UITouch
 
 @property(nonatomic) NSTimeInterval fakeTimestamp;
 @property(nonatomic) UITouchPhase fakePhase;

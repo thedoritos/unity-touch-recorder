@@ -1,26 +1,26 @@
 //
-//  UTFEvent.m
+//  UTREvent.m
 //  Unity-iPhone
 //
 //  Created by thedoritos on 1/22/17.
 //
 //
 
-#import "UTFEvent.h"
-#import "UTFTouch.h"
+#import "UTREvent.h"
+#import "UTRTouch.h"
 
-@implementation UTFEvent
+@implementation UTREvent
 
 +(instancetype)create:(UIEvent *)event phase:(UITouchPhase)phase
 {
-    UTFEvent *fake = [UTFEvent new];
+    UTREvent *fake = [UTREvent new];
     fake.phase = phase;
     
     fake.fakeTimestamp = event.timestamp;
     
     NSMutableSet *touches = [NSMutableSet new];
     for (UITouch *touch in event.allTouches) {
-        [touches addObject:[UTFTouch create:touch]];
+        [touches addObject:[UTRTouch create:touch]];
     }
     fake.fakeAllTouches = touches;
     
@@ -30,7 +30,7 @@
 -(void)delay:(NSTimeInterval)delay
 {
     _fakeTimestamp += delay;
-    for (UTFTouch *touch in _fakeAllTouches) {
+    for (UTRTouch *touch in _fakeAllTouches) {
         [touch delay:delay];
     }
 }

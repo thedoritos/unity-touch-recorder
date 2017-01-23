@@ -1,15 +1,15 @@
 //
-//  UnityView+UTFHook.m
+//  UnityView+UTRHook.m
 //  Unity-iPhone
 //
 //  Created by thedoritos on 1/22/17.
 //
 //
 
-#import "UnityView+UTFHook.h"
-#import "UTFRecorder.h"
+#import "UnityView+UTRHook.h"
+#import "UTRRecorder.h"
 
-@implementation UnityView(UTFHook)
+@implementation UnityView(UTRHook)
 
 - (void)touchesBegan:(NSSet*)touches withEvent:(UIEvent*)event
 {
@@ -19,7 +19,7 @@
 #if UNITY_TVOS
     if (UnityGetAppleTVRemoteTouchesEnabled())
 #endif
-    [[UTFRecorder sharedRecorder] record:event phase:UITouchPhaseBegan];
+    [[UTRRecorder sharedRecorder] record:event phase:UITouchPhaseBegan];
     
     UnitySendTouchesBegin(touches, event);
 }
@@ -31,7 +31,7 @@
 #if UNITY_TVOS
     if (UnityGetAppleTVRemoteTouchesEnabled())
 #endif
-    [[UTFRecorder sharedRecorder] record:event phase:UITouchPhaseEnded];
+    [[UTRRecorder sharedRecorder] record:event phase:UITouchPhaseEnded];
     
     UnitySendTouchesEnded(touches, event);
 }
@@ -43,7 +43,7 @@
 #if UNITY_TVOS
     if (UnityGetAppleTVRemoteTouchesEnabled())
 #endif
-    [[UTFRecorder sharedRecorder] record:event phase:UITouchPhaseCancelled];
+    [[UTRRecorder sharedRecorder] record:event phase:UITouchPhaseCancelled];
     
     UnitySendTouchesCancelled(touches, event);
 }
@@ -55,7 +55,7 @@
 #if UNITY_TVOS
     if (UnityGetAppleTVRemoteTouchesEnabled())
 #endif
-    [[UTFRecorder sharedRecorder] record:event phase:UITouchPhaseMoved];
+    [[UTRRecorder sharedRecorder] record:event phase:UITouchPhaseMoved];
     
     UnitySendTouchesMoved(touches, event);
 }

@@ -1,5 +1,5 @@
 //
-//  UTFEvent.h
+//  UTREvent.h
 //  Unity-iPhone
 //
 //  Created by thedoritos on 1/22/17.
@@ -8,7 +8,7 @@
 
 #import <UIKit/UIKit.h>
 
-@interface UTFEvent : UIEvent
+@interface UTREvent : UIEvent
 
 @property (nonatomic) UITouchPhase phase;
 
