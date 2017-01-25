@@ -8,6 +8,8 @@
 
 #import "UTRRecorder.h"
 #import "UTREvent.h"
+#import "UTRTouch.h"
+#import "UTRTouchSet.h"
 
 @implementation UTRRecorder
 
@@ -20,6 +22,7 @@
         recorder.recording = NO;
         recorder.playing = NO;
         recorder.events = [NSMutableArray new];
+        recorder.touches = [NSMutableArray new];
     });
     return recorder;
 }
@@ -40,12 +43,13 @@
     self.recording = NO;
 }
 
--(void)record:(UIEvent *)event phase:(UITouchPhase)phase
+-(void)record:(NSSet *)touches event:(UIEvent *)event phase:(UITouchPhase)phase
 {
     if (!self.recording) {
         return;
     }
     
+    [self.touches addObject:[UTRTouch createSet:touches]];
     [self.events addObject:[UTREvent create:event phase:phase]];
 }
 
@@ -63,6 +67,9 @@
     
     dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
         for(NSUInteger i = 0; i < repeat; i++) {
+            UTRTouchSet *touchSet = [UTRTouchSet create];
+            UTRTouchSet *allTouchSet = [UTRTouchSet create];
+            
             NSArray *items = [NSArray arrayWithArray:self.events];
             UTREvent *first = items.firstObject;
             NSTimeInterval delay = [[NSProcessInfo processInfo] systemUptime] - first.timestamp;
@@ -70,11 +77,24 @@
             for (UTREvent *e in items) {
                 [e delay:delay];
             }
+            for (NSSet *ts in self.touches) {
+                for (UTRTouch *t in ts) {
+                    [t delay:delay];
+                }
+            }
             
-            for (UTREvent *e in items) {
+            for (NSInteger index = 0; index < items.count; index++) {
+                UTREvent *e = items[index];
+                NSSet *t =self.touches[index];
+                
+                NSLog(@"UTR#self.touches.count:%lu", (unsigned long)self.touches.count);
+                
                 if (!self.playing) {
                     return;
                 }
+                
+                [touchSet update:t];
+//                [allTouchSet update:e.allTouches];
                 
                 [NSThread sleepForTimeInterval:e.timestamp - [[NSProcessInfo processInfo] systemUptime]];
                 
@@ -84,16 +104,20 @@
                 
                 switch (e.phase) {
                     case UITouchPhaseBegan:
-                        UnitySendTouchesBegin(e.allTouches, e);
+                        NSLog(@"UTRRecorder#began");
+                        UnitySendTouchesBegin(touchSet.touches, e);
                         break;
                     case UITouchPhaseEnded:
-                        UnitySendTouchesEnded(e.allTouches, e);
+                        NSLog(@"UTRRecorder#ended");
+                        UnitySendTouchesEnded(touchSet.touches, e);
                         break;
                     case UITouchPhaseCancelled:
-                        UnitySendTouchesCancelled(e.allTouches, e);
+                        NSLog(@"UTRRecorder#cancelled");
+                        UnitySendTouchesCancelled(touchSet.touches, e);
                         break;
                     case UITouchPhaseMoved:
-                        UnitySendTouchesMoved(e.allTouches, e);
+                        NSLog(@"UTRRecorder#moved");
+                        UnitySendTouchesMoved(touchSet.touches, e);
                         break;
                     default:
                         break;

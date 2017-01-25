@@ -19,7 +19,7 @@
 #if UNITY_TVOS
     if (UnityGetAppleTVRemoteTouchesEnabled())
 #endif
-    [[UTRRecorder sharedRecorder] record:event phase:UITouchPhaseBegan];
+        [[UTRRecorder sharedRecorder] record:touches event:event phase:UITouchPhaseBegan];
     
     UnitySendTouchesBegin(touches, event);
 }
@@ -31,7 +31,7 @@
 #if UNITY_TVOS
     if (UnityGetAppleTVRemoteTouchesEnabled())
 #endif
-    [[UTRRecorder sharedRecorder] record:event phase:UITouchPhaseEnded];
+    [[UTRRecorder sharedRecorder] record:touches event:event phase:UITouchPhaseEnded];
     
     UnitySendTouchesEnded(touches, event);
 }
@@ -43,7 +43,7 @@
 #if UNITY_TVOS
     if (UnityGetAppleTVRemoteTouchesEnabled())
 #endif
-    [[UTRRecorder sharedRecorder] record:event phase:UITouchPhaseCancelled];
+    [[UTRRecorder sharedRecorder] record:touches event:event phase:UITouchPhaseCancelled];
     
     UnitySendTouchesCancelled(touches, event);
 }
@@ -55,7 +55,7 @@
 #if UNITY_TVOS
     if (UnityGetAppleTVRemoteTouchesEnabled())
 #endif
-    [[UTRRecorder sharedRecorder] record:event phase:UITouchPhaseMoved];
+    [[UTRRecorder sharedRecorder] record:touches event:event phase:UITouchPhaseMoved];
     
     UnitySendTouchesMoved(touches, event);
 }

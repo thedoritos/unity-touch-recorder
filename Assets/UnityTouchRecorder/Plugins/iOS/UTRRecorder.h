@@ -14,13 +14,14 @@
 @property(nonatomic) BOOL playing;
 
 @property(nonatomic) NSMutableArray *events;
+@property(nonatomic) NSMutableArray *touches;
 
 +(instancetype)sharedRecorder;
 
 -(void)startRecording;
 -(void)stopRecording;
 
--(void)record:(UIEvent *)event phase:(UITouchPhase)phase;
+-(void)record:(NSSet *)touches event:(UIEvent *)event phase:(UITouchPhase)phase;
 -(NSUInteger)count;
 
 -(void)play:(NSUInteger)repeat interval:(float)interval;
